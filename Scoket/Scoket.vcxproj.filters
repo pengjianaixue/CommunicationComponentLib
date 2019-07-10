@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Scoket">
+      <UniqueIdentifier>{9751fae0-4ff1-4bf3-8bf9-9a365d36de44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scoket\Tcp_Client">
+      <UniqueIdentifier>{036423c1-0812-4acd-a3db-3da9bfada810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scoket\Tcp_Server">
+      <UniqueIdentifier>{16c79153-9bbd-494b-b2a9-5370e58c68b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scoket\UDP">
+      <UniqueIdentifier>{093e87dc-b02d-4e44-9de1-69a9c73f261a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,6 +36,15 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Socket\Tcp_Client\ScoketTcpClient.h">
+      <Filter>Scoket\Tcp_Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket\Tcp_Server\ScoketTcpServer.h">
+      <Filter>Scoket\Tcp_Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket\SocketInterface.h">
+      <Filter>Scoket</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -31,6 +52,15 @@
     </ClCompile>
     <ClCompile Include="Scoket.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp">
+      <Filter>Scoket\Tcp_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket\Tcp_Server\ScoketTcpServer.cpp">
+      <Filter>Scoket\Tcp_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket\SocketInterface.cpp">
+      <Filter>Scoket</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
