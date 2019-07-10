@@ -21,8 +21,11 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="synchronizationwrap.hpp">
+    <ClInclude Include="..\Scoket\stdafx.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="synchronizationwrap.hpp">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

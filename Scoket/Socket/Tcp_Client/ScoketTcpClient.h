@@ -1,6 +1,6 @@
 #pragma once
 #include "../SocketInterface.h"
-
+#include <atomic>
 class CScoketTCPClient :public CScoketBase
 {
 public:
@@ -29,7 +29,7 @@ private:
 	RecviCallBackFunction				m_RecviCallBackFunction			= { nullptr };
 	std::shared_ptr<std::thread>		m_RecviProcessThread			= { nullptr };
 	fd_set								m_Recvifdset					= {FD_ZERO(&m_Recvifdset)};
-	bool								m_RecviProcessThreadRunControl  = { false };
+	std::atomic<bool>					m_RecviProcessThreadRunControl  = { false };
 	
 };
 

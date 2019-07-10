@@ -38,6 +38,7 @@ bool CScoketTCPClient::Connect()
 		return false;
 	}
 	this->m_ConnectFlag = true;
+	return true;
 }
 
 bool CScoketTCPClient::DisConnect()
@@ -81,8 +82,10 @@ bool CScoketTCPClient::ReigsterAsyncRecviProcessFunction(RecviCallBackFunction C
 		m_RecviCallBackFunction = CallBackfunction;
 		if (!m_RecviProcessThread)
 		{
-			m_RecviProcessThread = std::make_shared<std::thread>(&CScoketTCPClient::ThreadProcessFunction, this);
+			m_RecviProcessThreadRunControl = true;
+			m_RecviProcessThread = std::make_shared<std::thread>(&CScoketTCPClient::ThreadProcessFunction, this,this);
 			FD_SET(m_sockthandle, &m_Recvifdset);
+			
 		}
 		return true;
 	}
@@ -107,10 +110,11 @@ void CScoketTCPClient::ThreadProcessFunction(CScoketTCPClient *ClassParam)
 				}
 				else if (retcode == SOCKET_ERROR)
 				{
-
-					DEBUGMSG("select function occur error!!!")
+					int errorcode = GetLastError();
+					std::stringstream debuginfo;
+					debuginfo << "select function occur error!!!" << "error code is " << errorcode;
+					DEBUGMSG(debuginfo.str())
 				}
-				
 			}
 			if (FD_ISSET(this->m_sockthandle, &m_Recvifdset))
 			{

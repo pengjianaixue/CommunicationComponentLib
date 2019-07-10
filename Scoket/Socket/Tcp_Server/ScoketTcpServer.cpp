@@ -7,4 +7,5 @@ CScoketTcpServer::CScoketTcpServer()
 
 CScoketTcpServer::~CScoketTcpServer()
 {
+
 }

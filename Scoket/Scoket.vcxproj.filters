@@ -45,11 +45,11 @@
     <ClInclude Include="Socket\SocketInterface.h">
       <Filter>Scoket</Filter>
     </ClInclude>
+    <ClInclude Include="Socket\UDP\SocketUDPClient.h">
+      <Filter>Scoket\UDP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp">
       <Filter>Scoket\Tcp_Client</Filter>
     </ClCompile>
@@ -61,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Test.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket\UDP\SocketUDPClient.cpp">
+      <Filter>Scoket\UDP</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

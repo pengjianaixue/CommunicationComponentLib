@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <WinSock2.h>
 #include <string>
-#include "synchronizationwrap.hpp"
 #include <functional>
 #include <iostream>
 #include <sstream>
@@ -13,6 +12,7 @@
 #else
 #define DEBUGMSG(msg)	 
 #endif // _DEBUG
+#pragma comment(lib,"ws2_32.lib")
 class CScoketBase
 {
 public:

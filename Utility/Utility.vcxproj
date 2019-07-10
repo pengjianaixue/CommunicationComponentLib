@@ -130,6 +130,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Scoket\stdafx.h" />
     <ClInclude Include="synchronizationwrap.hpp" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
