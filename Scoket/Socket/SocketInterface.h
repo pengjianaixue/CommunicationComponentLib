@@ -26,7 +26,7 @@ public:
 		Client ,
 		Server
 	} CLIENTTYPE;
-	using   RecviCallBackFunction = std::function<bool(char* Recvibuf,int length, int flag)>;
+	using   RecviCallBackFunction = std::function<void(char* Recvibuf,int length, int flag)>;
 	using   byte				  = unsigned char;
 public:
 	CScoketBase(const std::string &IpAddr = "127.0.0.1", const std::string &PortNum = "8080",
