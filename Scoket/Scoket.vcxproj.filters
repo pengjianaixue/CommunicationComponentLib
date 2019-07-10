@@ -50,9 +50,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Scoket.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp">
       <Filter>Scoket\Tcp_Client</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="Socket\SocketInterface.cpp">
       <Filter>Scoket</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,7 +8,6 @@
 #include <sstream>
 #include <thread>
 #include <memory>
-#include <event2/event.h>
 #ifdef _DEBUG
 #define DEBUGMSG(msg) std::cout<<(msg)<<std::endl;
 #else

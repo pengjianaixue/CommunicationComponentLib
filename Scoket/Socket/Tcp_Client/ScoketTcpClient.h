@@ -1,5 +1,5 @@
 #pragma once
-#include "SocketInterface.h"
+#include "../SocketInterface.h"
 
 class CScoketTCPClient :public CScoketBase
 {
