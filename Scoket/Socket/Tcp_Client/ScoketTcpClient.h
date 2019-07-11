@@ -17,6 +17,7 @@ public:
 	virtual	int			Recvi(byte *recvidata, int recvilength) override;
 	virtual	bool		GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget) override;
 	virtual	bool		ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction) override;
+	virtual bool		GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const override;
 private:
 	void				ThreadProcessFunction(CScoketTCPClient *ClassParam);
 
@@ -30,6 +31,6 @@ private:
 	std::shared_ptr<std::thread>		m_RecviProcessThread			= { nullptr };
 	fd_set								m_Recvifdset					= {FD_ZERO(&m_Recvifdset)};
 	std::atomic<bool>					m_RecviProcessThreadRunControl  = { false };
-	
+
 };
 

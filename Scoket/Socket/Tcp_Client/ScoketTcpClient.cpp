@@ -8,13 +8,14 @@ CScoketTCPClient::CScoketTCPClient(const std::string &IpAddr, const std::string 
 	this->m_RemoteAddr.sin_family = AF_INET;
 	this->m_RemoteAddr.sin_addr.S_un.S_addr = inet_addr(m_IpAddr.c_str());
 	this->m_RemoteAddr.sin_port = htons(std::atoi(m_PortNum.c_str()));
+	setsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&m_Sendtimeout), sizeof(m_Sendtimeout));
+	setsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&m_Recvitimeout), sizeof(m_Recvitimeout));
 
 }
 
 
 CScoketTCPClient::~CScoketTCPClient()
 {
-	
 	DisConnect();
 }
 
@@ -94,7 +95,13 @@ bool CScoketTCPClient::ReigsterAsyncRecviProcessFunction(RecviCallBackFunction C
 	}
 	return false;
 }
-
+bool CScoketTCPClient::GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const
+{
+	int oplen = sizeof(int);
+	int retsend = getsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<char*>(&Sendtimeout), &oplen);
+	int retrecv = getsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<char*>(&Recvitimeout), &oplen);
+	return ((retsend == 0) && (retrecv == 0));
+}
 void CScoketTCPClient::ThreadProcessFunction(CScoketTCPClient *ClassParam)
 {
 	timeval ReadTimeOut = {0};

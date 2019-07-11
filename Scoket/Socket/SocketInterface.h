@@ -1,5 +1,4 @@
 #pragma once
-#include <Windows.h>
 #include <WinSock2.h>
 #include <string>
 #include <functional>
@@ -18,36 +17,41 @@ class CScoketBase
 public:
 	typedef enum SocktType
 	{
-		TCP ,
+		TCP,
 		UDP
 	} SOCKTTYPE;
 	typedef enum ClientType
 	{
-		Client ,
+		Client,
 		Server
 	} CLIENTTYPE;
-	using   RecviCallBackFunction = std::function<void(char* Recvibuf,int length, int flag)>;
-	using   byte				  = unsigned char;
+	using   RecviCallBackFunction = std::function<void(char* Recvibuf, int length, int flag)>;
+	using   byte = unsigned char;
 public:
 	CScoketBase(const std::string &IpAddr = "127.0.0.1", const std::string &PortNum = "8080",
 		SOCKTTYPE socktype = SOCKTTYPE::TCP, CLIENTTYPE clienttype = CLIENTTYPE::Client);
-	virtual								~CScoketBase() ;
+	virtual								~CScoketBase();
 	//Interface 
-	virtual	bool						Connect() ;
-	virtual	bool						DisConnect() ;
-	virtual	bool						Isopen() ;
-	virtual	bool						IsConnect() ;
+	virtual	bool						Connect();
+	virtual	bool						DisConnect();
+	virtual	bool						Isopen();
+	virtual	bool						IsConnect();
 	virtual	int							SendData(const byte* senddata, int SendNum);
-	virtual	int							Recvi(byte* recvidata, int recvilength) ;
+	virtual	int							Recvi(byte* recvidata, int recvilength);
 	virtual	int							RecviAsync(byte* recvidata, int recvilength);
-	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget) ;
-	inline  virtual	bool				ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction) { return false; };
+	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget);
+	virtual	bool						ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction);
+	virtual bool						SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout);
+	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const;
+
 private:
 	static bool SokctLoadinit();
 protected:
-	CLIENTTYPE							m_ClientType	= {};
-	SOCKTTYPE							m_SokcetType	= {};
-	std::string							m_IpAddr		= {};
-	std::string							m_PortNum		= {};
+	CLIENTTYPE							m_ClientType = {};
+	SOCKTTYPE							m_SokcetType = {};
+	std::string							m_IpAddr = {};
+	std::string							m_PortNum = {};
+	int									m_Sendtimeout =  { 30000 };
+	int									m_Recvitimeout = { 60000 };
 	
 };

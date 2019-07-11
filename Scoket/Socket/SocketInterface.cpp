@@ -4,6 +4,7 @@ CScoketBase::CScoketBase(const std::string & IpAddr, const std::string & PortNum
 {
 	
 	SokctLoadinit();
+
 }
 
 CScoketBase::~CScoketBase()
@@ -52,9 +53,27 @@ bool CScoketBase::GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN & clientinforge
 	return false;
 }
 
+bool CScoketBase::ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction)
+{
+	return false;
+}
+
+bool CScoketBase::SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout)
+{
+	m_Sendtimeout = Sendtimeout;
+	m_Recvitimeout = Recvitimeout;
+	return true;
+}
+
+bool CScoketBase::GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const
+{
+	
+	return true;
+}
+
 bool CScoketBase::SokctLoadinit()
 {
-	DWORD sockVersion = MAKEWORD(2, 2);
+	WORD sockVersion = MAKEWORD(2, 2);
 	WSADATA wsaData;
 	if (WSAStartup(sockVersion, &wsaData) != 0)
 	{

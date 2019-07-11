@@ -65,5 +65,8 @@
     <ClCompile Include="Socket\UDP\SocketUDPClient.cpp">
       <Filter>Scoket\UDP</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

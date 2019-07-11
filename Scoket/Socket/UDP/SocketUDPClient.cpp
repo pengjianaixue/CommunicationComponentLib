@@ -1,11 +1,7 @@
 #include "SocketUDPClient.h"
-
-
-
 CSocketUDP::CSocketUDP()
 {
-
-
+	
 }
 
 
