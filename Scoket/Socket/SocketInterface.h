@@ -11,7 +11,6 @@
 #else
 #define DEBUGMSG(msg)	 
 #endif // _DEBUG
-#pragma comment(lib,"ws2_32.lib")
 class CScoketBase
 {
 public:

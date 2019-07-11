@@ -1,4 +1,5 @@
 #include "SocketInterface.h"
+#pragma comment(lib,"ws2_32.lib")
 CScoketBase::CScoketBase(const std::string & IpAddr, const std::string & PortNum, SOCKTTYPE socktype, CLIENTTYPE clienttype)
 	:m_IpAddr(IpAddr), m_PortNum(PortNum), m_ClientType(clienttype), m_SokcetType(socktype)
 {

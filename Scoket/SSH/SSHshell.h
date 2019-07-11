@@ -3,6 +3,7 @@
 #include <libssh2_sftp.h>
 #include <string>
 #include "SSHChannel.h"
+#include <iostream>
 using std::string;
 class CSSHshell
 {
@@ -17,12 +18,16 @@ public:
 	static string s_password;
 
 private:
-	string m_srvIp;
-	int    m_srvPort;
-	string m_userName;
-	string m_password;
-	int    m_sock;
-	LIBSSH2_SESSION *m_session;
+	string m_srvIp				= {};
+	int    m_srvPort			= {0};
+	string m_userName			= {};
+	string m_password			= {};
+#ifdef _WIN32
+	SOCKET m_sock				= { INVALID_SOCKET };
+#else
+	int   m_sock				= { 0 };
+#endif // _WIN32
+	LIBSSH2_SESSION *m_session	= {nullptr};
 };
 
 

@@ -2,6 +2,7 @@
 #include <libssh2.h>
 #include <libssh2_sftp.h>
 #include <string>
+#include <iostream>
 using std::string;
 class Channel
 {
