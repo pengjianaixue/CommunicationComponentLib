@@ -1,6 +1,8 @@
 #pragma once
 #include "../SocketInterface.h"
 #include <atomic>
+#include <chrono>
+using namespace std::chrono;
 class CScoketTCPClient :public CScoketBase
 {
 public:

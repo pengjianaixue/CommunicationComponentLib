@@ -4,12 +4,12 @@ CScoketTCPClient::CScoketTCPClient(const std::string &IpAddr, const std::string 
 {
 	m_ClientType = CScoketBase::CLIENTTYPE::Client;
 	m_SokcetType = CScoketBase::SOCKTTYPE::TCP;
-	this->m_sockthandle = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	this->m_sockthandle = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	this->m_RemoteAddr.sin_family = AF_INET;
 	this->m_RemoteAddr.sin_addr.S_un.S_addr = inet_addr(m_IpAddr.c_str());
 	this->m_RemoteAddr.sin_port = htons(std::atoi(m_PortNum.c_str()));
-	setsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&m_Sendtimeout), sizeof(m_Sendtimeout));
-	setsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&m_Recvitimeout), sizeof(m_Recvitimeout));
+	::setsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&m_Sendtimeout),  sizeof(m_Sendtimeout));
+	::setsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&m_Recvitimeout), sizeof(m_Recvitimeout));
 
 }
 
@@ -25,11 +25,11 @@ bool CScoketTCPClient::Connect()
 	{
 		return false;
 	}
-	int ret = connect(this->m_sockthandle, (sockaddr*)(&this->m_RemoteAddr), sizeof(this->m_RemoteAddr));
+	int ret = ::connect(this->m_sockthandle, (sockaddr*)(&this->m_RemoteAddr), sizeof(this->m_RemoteAddr));
 	if (ret == SOCKET_ERROR)
 	{
 #ifdef _DEBUG
-		int errorcode = WSAGetLastError();
+		int errorcode = ::WSAGetLastError();
 		std::stringstream debuginfo;
 		debuginfo << "Connect TCP Server fail the IPAddress is !!!" << m_IpAddr << "the Port is " << m_PortNum << "Error code :" << errorcode;
 		DEBUGMSG(debuginfo.str())
@@ -64,13 +64,13 @@ bool CScoketTCPClient::IsConnect()
 
 int CScoketTCPClient::SendData(const byte* senddata, int SendNum)
 {
-	return send(this->m_sockthandle, reinterpret_cast<const char*>(senddata), SendNum, 0);
+	return ::send(this->m_sockthandle, reinterpret_cast<const char*>(senddata), SendNum, 0);
 }
 
 int CScoketTCPClient::Recvi(byte *recvidata, int recvilength)
 {
 	int Recvilen = { 0 };
-	Recvilen = recv(this->m_sockthandle, reinterpret_cast<char*>(recvidata), recvilength, 0);
+	Recvilen = ::recv(this->m_sockthandle, reinterpret_cast<char*>(recvidata), recvilength, 0);
 	return Recvilen;
 }
 
@@ -98,24 +98,28 @@ bool CScoketTCPClient::ReigsterAsyncRecviProcessFunction(RecviCallBackFunction C
 bool CScoketTCPClient::GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const
 {
 	int oplen = sizeof(int);
-	int retsend = getsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<char*>(&Sendtimeout), &oplen);
-	int retrecv = getsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<char*>(&Recvitimeout), &oplen);
+	int retsend = ::getsockopt(this->m_sockthandle, SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<char*>(&Sendtimeout), &oplen);
+	int retrecv = ::getsockopt(this->m_sockthandle, SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<char*>(&Recvitimeout), &oplen);
 	return ((retsend == 0) && (retrecv == 0));
 }
 void CScoketTCPClient::ThreadProcessFunction(CScoketTCPClient *ClassParam)
 {
 	timeval ReadTimeOut = {0};
 	ReadTimeOut.tv_sec = 0;
-	ReadTimeOut.tv_usec = 100;
+	ReadTimeOut.tv_usec = 1000;//1 ms
 	char recvibuf[20000] = {0};
 	if (m_RecviCallBackFunction!=nullptr && m_sockthandle != INVALID_SOCKET)
 	{
 		while (m_RecviProcessThreadRunControl)
 		{
+			/*auto start = system_clock::now();*/
 			int retcode = ::select(0, &m_Recvifdset, nullptr, nullptr, &ReadTimeOut);
 			if (retcode == 0)
 			{
+				/*auto end = system_clock::now();
+				std::cout << "cost time(milliseconds): " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;*/
 				FD_SET(m_sockthandle, &m_Recvifdset);//the timeout will clean the FD_Set struct
+				DEBUGMSG("select is time out")
 				continue;
 			}
 			else if (retcode == SOCKET_ERROR)
