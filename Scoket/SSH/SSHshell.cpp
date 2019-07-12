@@ -5,6 +5,10 @@ CSSHshell::CSSHshell(const string &srvIp, int srvPort)
 		:m_srvIp(srvIp),m_srvPort(srvPort)
 {
 	libssh2_init(0);
+	WORD sockVersion = MAKEWORD(2, 2);
+	WSADATA wsaData;
+	WSAStartup(sockVersion, &wsaData);
+
 }
 
 
@@ -16,28 +20,42 @@ CSSHshell::~CSSHshell()
 
 bool CSSHshell::Connect(const string & userName, const string & userPwd)
 {
-	m_sock = socket(AF_INET, SOCK_STREAM, 0);
+	m_sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 	SOCKADDR_IN sin;
 	sin.sin_family = AF_INET;
-	sin.sin_addr.S_un.S_addr = inet_addr(m_srvIp.c_str());
+	sin.sin_addr.s_addr = inet_addr(m_srvIp.c_str());
 	sin.sin_port = htons(m_srvPort);
-	int ret = ::connect(m_sock, (sockaddr*)(&sin), sizeof(sin));
-	if (ret!=0)
+	if (::connect(m_sock, (sockaddr*)(&sin), sizeof(sin))!=0)
 	{
 		int errorcode = WSAGetLastError();
+		std::cout << errorcode << std::endl;
 		Disconnect();
 		return false;
 	}
 
 	m_session = libssh2_session_init();
-	if (libssh2_session_handshake(m_session, m_sock))
+	if (!m_session)
 	{
+		return false;
+	}
+	int rc = 0;
+	if ((rc = libssh2_session_handshake(m_session, m_sock)))
+	{
+		fprintf(stderr, "Error when starting up SSH session: %d\n", rc);
+		return -1;
 		Disconnect();
 		return false;
 	}
 	int auth_pw = 0;
-	string fingerprint = libssh2_hostkey_hash(m_session, LIBSSH2_HOSTKEY_HASH_SHA1);
-	string userauthlist = libssh2_userauth_list(m_session, userName.c_str(), (int)userName.size());
+	const char* fingerprint = libssh2_hostkey_hash(m_session, LIBSSH2_HOSTKEY_HASH_SHA1);
+	fprintf(stderr, "Fingerprint: ");
+	for (int i = 0; i < 20; i++) {
+
+		fprintf(stderr, "%02X ", (unsigned char)fingerprint[i]);
+	}
+	fprintf(stderr, "\n");
+	char* userauthlistchar = libssh2_userauth_list(m_session, userName.c_str(), userName.size());
+	string userauthlist = userauthlistchar;
 	if (strstr(userauthlist.c_str(), "password") != NULL)
 	{
 		auth_pw |= 1;
@@ -109,7 +127,7 @@ Channel * CSSHshell::CreateChannel(const string & ptyType)
 
 	LIBSSH2_CHANNEL *channel = NULL;
 	/* Request a shell */
-	if (!(channel = libssh2_channel_open_session(m_session)))
+	if ((channel = libssh2_channel_open_session(m_session)))
 	{
 		return NULL;
 	}
