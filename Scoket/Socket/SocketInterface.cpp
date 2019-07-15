@@ -33,17 +33,17 @@ bool CScoketBase::IsConnect()
 	return false;
 }
 
-int CScoketBase::SendData(const byte* senddata, int SendNum)
+int CScoketBase::SendData(const byte* senddata, size_t SendNum)
 {
 	return 0;
 }
 
-int CScoketBase::Recvi(byte *recvidata, int recvilength)
+int CScoketBase::Recvi(byte *recvidata, size_t recvilength)
 {
 	return 0;
 }
 
-int CScoketBase::RecviAsync(byte * recvidata, int recvilength)
+int CScoketBase::RecviAsync(byte * recvidata, size_t recvilength)
 {
 
 	return 0;
@@ -68,8 +68,24 @@ bool CScoketBase::SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout)
 
 bool CScoketBase::GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const
 {
-	
 	return true;
+}
+
+bool CScoketBase::SetClientHeartbeat(const byte *Heartbeatdata, size_t SendTimeIntervalofMillisecond)
+{
+	m_HeartbeatData = (const char*)Heartbeatdata;
+	m_SendTimeInterval = SendTimeIntervalofMillisecond;
+	return true;
+}
+
+bool CScoketBase::EnableClientHeartbeat()
+{
+	return m_HeartbeatEnable=true;
+}
+
+bool CScoketBase::DisableClientHeartbeat()
+{
+	return m_HeartbeatEnable = false;
 }
 
 bool CScoketBase::SokctLoadinit()

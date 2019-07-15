@@ -6,6 +6,7 @@
 #include <sstream>
 #include <thread>
 #include <memory>
+#include <atomic>
 #ifdef _DEBUG
 #define DEBUGMSG(msg) std::cout<<(msg)<<std::endl;
 #else
@@ -35,22 +36,29 @@ public:
 	virtual	bool						DisConnect();
 	virtual	bool						Isopen();
 	virtual	bool						IsConnect();
-	virtual	int							SendData(const byte* senddata, int SendNum);
-	virtual	int							Recvi(byte* recvidata, int recvilength);
-	virtual	int							RecviAsync(byte* recvidata, int recvilength);
+	virtual	int							SendData(const byte* senddata, size_t SendNum);
+	virtual	int							Recvi(byte* recvidata, size_t recvilength);
+	virtual	int							RecviAsync(byte* recvidata, size_t recvilength);
 	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget);
 	virtual	bool						ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction);
 	virtual bool						SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout);
 	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const;
+	virtual bool						SetClientHeartbeat(const byte* Heartbeatdata, size_t SendTimeIntervalofMillisecond);
+	virtual bool						EnableClientHeartbeat();
+	virtual bool						DisableClientHeartbeat();
+
+
 
 private:
 	static bool SokctLoadinit();
 protected:
-	CLIENTTYPE							m_ClientType = {};
-	SOCKTTYPE							m_SokcetType = {};
-	std::string							m_IpAddr = {};
-	std::string							m_PortNum = {};
-	int									m_Sendtimeout =  { 30000 };
-	int									m_Recvitimeout = { 60000 };
-	
+	CLIENTTYPE							m_ClientType		= {};
+	SOCKTTYPE							m_SokcetType		= {};
+	std::string							m_IpAddr			= {};
+	std::string							m_PortNum			= {};
+	int									m_Sendtimeout		= { 30000 };
+	int									m_Recvitimeout		= { 60000 };
+	std::string							m_HeartbeatData		= {};
+	size_t								m_SendTimeInterval	= { 0 };
+	std::atomic<bool>					m_HeartbeatEnable	= { false };
 };
