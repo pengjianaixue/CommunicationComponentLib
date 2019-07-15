@@ -172,12 +172,11 @@ void CScoketTCPClient::HeartbeatThreadProcessFunction(CScoketTCPClient * ClassPa
 {
 	while (CScoketBase::m_HeartbeatEnable)
 	{
-		auto start = system_clock::now();
+		CRunTimeMeausre timestart;
 		std::this_thread::sleep_for(std::chrono::milliseconds(m_SendTimeInterval));
 		CriticalSectionLockGuardian heartbeat(ClassParam->m_HeartbeatandSendcritical);
 		::send(this->m_sockthandle, m_HeartbeatData.c_str(), m_HeartbeatData.length(), 0);
-		auto end = system_clock::now();
-		std::cout << "cost time(milliseconds): " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;
+		timestart.PrintTimePassed(CRunTimeMeausre::TIMEUNIT::milliseconds, "cost time(milliseconds):");
 	}
 }
 

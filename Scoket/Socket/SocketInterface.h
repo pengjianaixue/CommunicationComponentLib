@@ -32,7 +32,7 @@ public:
 		SOCKTTYPE socktype = SOCKTTYPE::TCP, CLIENTTYPE clienttype = CLIENTTYPE::Client);
 	virtual								~CScoketBase();
 	//Interface 
-	virtual	bool						Connect();
+	virtual	bool						Connect() = 0;
 	virtual	bool						DisConnect();
 	virtual	bool						Isopen();
 	virtual	bool						IsConnect();
