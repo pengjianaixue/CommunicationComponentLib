@@ -4,8 +4,9 @@
 #include <string>
 #include "SSHChannel.h"
 #include <iostream>
+#include "../../Utility/DynamicLibExprotMarco.h"
 using std::string;
-class CSSHshell
+class  CSSHshell
 {
 public:
 	CSSHshell(const string &srvIp, int srvPort = 22);

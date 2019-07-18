@@ -1,6 +1,6 @@
 #include "SSHshell.h"
 #pragma comment(lib,"libssh2.lib")
- std::string CSSHshell::s_password = {};
+std::string CSSHshell::s_password = {};
 CSSHshell::CSSHshell(const string &srvIp, int srvPort)
 		:m_srvIp(srvIp),m_srvPort(srvPort)
 {

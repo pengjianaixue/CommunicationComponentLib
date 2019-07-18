@@ -28,15 +28,6 @@
     <Filter Include="SSH">
       <UniqueIdentifier>{4943bf26-bb62-41d6-bd36-3eb04813c077}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{0d13d6a2-96ef-456e-a935-f95c5f4627a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility\Synchronizationwrap">
-      <UniqueIdentifier>{7b7f85dd-02b5-4d78-ba78-20fe62f1f525}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility\TestFunction">
-      <UniqueIdentifier>{eee69f5d-b215-4006-afb0-1ad4d1bbb4cb}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -66,12 +57,6 @@
     <ClInclude Include="SSH\SSHshell.h">
       <Filter>SSH</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\Synchronizationwrap\synchronizationwrap.hpp">
-      <Filter>Utility\Synchronizationwrap</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\TestFunction\RunTimeMeausre.h">
-      <Filter>Utility\TestFunction</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp">
@@ -97,9 +82,6 @@
     </ClCompile>
     <ClCompile Include="SSH\SSHshell.cpp">
       <Filter>SSH</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\TestFunction\RunTimeMeausre.cpp">
-      <Filter>Utility\TestFunction</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

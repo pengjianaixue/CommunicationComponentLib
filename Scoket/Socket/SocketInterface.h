@@ -7,6 +7,7 @@
 #include <thread>
 #include <memory>
 #include <atomic>
+#include "../../Utility/DynamicLibExprotMarco.h"
 #ifdef _DEBUG
 #define DEBUGMSG(msg) std::cout<<(msg)<<std::endl;
 #else

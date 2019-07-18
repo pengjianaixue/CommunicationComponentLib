@@ -3,8 +3,9 @@
 #include <libssh2_sftp.h>
 #include <string>
 #include <iostream>
+#include "../../Utility/DynamicLibExprotMarco.h"
 using std::string;
-class Channel
+class  Channel
 {
 public:
 	Channel(LIBSSH2_CHANNEL *channel);
