@@ -66,7 +66,7 @@ bool CSocketUDP::IsConnect()
 
 int CSocketUDP::SendData(const byte * senddata, size_t SendNum)
 {
-
+	CriticalSectionLockGuardian heartbeat(m_HeartbeatandSendcritical);
 	return ::sendto(this->m_sockthandle, reinterpret_cast<const char*>(senddata),SendNum, 0, (SOCKADDR*)&this->m_RemoteAddr, sizeof(this->m_RemoteAddr));
 }
 
