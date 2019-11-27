@@ -3,20 +3,21 @@
 #include <iostream>
 #include <string>
 using namespace std::chrono;
-class CRunTimeMeausre
+class RunTimeMeausre
 {
 public:
 	typedef enum  Timeunit
 	{
 		milliseconds,
-		micro,
-		nano
+		microseconds,
+		nanoseconds
 	}TIMEUNIT;
 public:
-	CRunTimeMeausre();
-	virtual ~CRunTimeMeausre();
-	long long GetTimePassed(TIMEUNIT timecalcunit);
-	bool PrintTimePassed(TIMEUNIT timecalcunit,std::string PrintPrexInfo="");
+	RunTimeMeausre();
+	virtual ~RunTimeMeausre();
+	long long getTimePassed(TIMEUNIT timecalcunit);
+	void printTimePassed(TIMEUNIT timecalcunit,std::string PrintPrexInfo="",bool isReset = false);
+	void timePointReset();
 private:
 	
 private:

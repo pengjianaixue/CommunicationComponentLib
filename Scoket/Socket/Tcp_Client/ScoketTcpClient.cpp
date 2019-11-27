@@ -160,7 +160,10 @@ void CScoketTCPClient::RecviThreadProcessFunction(CScoketTCPClient *ClassParam)
 			{
 				ZeroMemory(recvibuf, 20000);
 				int Recvilen = recv(this->m_sockthandle, recvibuf, 20000, 0);
-				m_RecviCallBackFunction(recvibuf, Recvilen, 0);
+				if (m_RecviCallBackFunction)
+				{
+					m_RecviCallBackFunction(recvibuf, Recvilen, 0);
+				}
 			}
 		}
 	}
@@ -172,11 +175,11 @@ void CScoketTCPClient::HeartbeatThreadProcessFunction(CScoketTCPClient * ClassPa
 {
 	while (CScoketBase::m_HeartbeatEnable)
 	{
-		CRunTimeMeausre timestart;
+		RunTimeMeausre timestart;
 		std::this_thread::sleep_for(std::chrono::milliseconds(m_SendTimeInterval));
 		CriticalSectionLockGuardian heartbeat(ClassParam->m_HeartbeatandSendcritical);
 		::send(this->m_sockthandle, m_HeartbeatData.c_str(), m_HeartbeatData.length(), 0);
-		timestart.PrintTimePassed(CRunTimeMeausre::TIMEUNIT::milliseconds, "cost time(milliseconds):");
+		timestart.PrintTimePassed(RunTimeMeausre::TIMEUNIT::milliseconds, "cost time(milliseconds):");
 	}
 }
 
