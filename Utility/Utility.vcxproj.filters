@@ -24,12 +24,12 @@
     <ClInclude Include="DynamicLibExprotMarco.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TestFunction\RunTimeMeausre.h">
+    <ClInclude Include="TestFunction\RunTimeMeasure.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestFunction\RunTimeMeausre.cpp">
+    <ClCompile Include="TestFunction\RunTimeMeasure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

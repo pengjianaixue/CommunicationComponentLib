@@ -1,18 +1,18 @@
-#include "RunTimeMeausre.h"
+#include "RunTimeMeasure.h"
 
 
-RunTimeMeausre::RunTimeMeausre()
+RunTimeMeasure::RunTimeMeasure()
 {
 
 }
 
 
-RunTimeMeausre::~RunTimeMeausre()
+RunTimeMeasure::~RunTimeMeasure()
 {
 
 }
 
-void RunTimeMeausre::printTimePassed(TIMEUNIT timecalcunit,std::string PrintPrexInfo/*=""*/, bool isReset /*= false*/)
+void RunTimeMeasure::printTimePassed(TIMEUNIT timecalcunit,std::string PrintPrexInfo/*=""*/, bool isReset /*= false*/)
 {
 
 	auto time_now = system_clock::now();
@@ -35,12 +35,12 @@ void RunTimeMeausre::printTimePassed(TIMEUNIT timecalcunit,std::string PrintPrex
 	return;
 }
 
-void RunTimeMeausre::timePointReset()
+void RunTimeMeasure::timePointReset()
 {
 	m_start = { system_clock::now() };
 }
 
-long long RunTimeMeausre::getTimePassed(TIMEUNIT timecalcunit)
+long long RunTimeMeasure::getTimePassed(TIMEUNIT timecalcunit)
 {
 	auto time_now = system_clock::now();
 	if (timecalcunit==0)

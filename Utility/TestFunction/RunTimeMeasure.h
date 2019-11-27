@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 using namespace std::chrono;
-class RunTimeMeausre
+class RunTimeMeasure
 {
 public:
 	typedef enum  Timeunit
@@ -13,8 +13,8 @@ public:
 		nanoseconds
 	}TIMEUNIT;
 public:
-	RunTimeMeausre();
-	virtual ~RunTimeMeausre();
+	RunTimeMeasure();
+	virtual ~RunTimeMeasure();
 	long long getTimePassed(TIMEUNIT timecalcunit);
 	void printTimePassed(TIMEUNIT timecalcunit,std::string PrintPrexInfo="",bool isReset = false);
 	void timePointReset();
