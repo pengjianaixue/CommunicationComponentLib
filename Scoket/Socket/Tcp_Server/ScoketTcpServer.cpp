@@ -2,7 +2,7 @@
 
 CScoketTcpServer::CScoketTcpServer()
 {
-
+	
 }
 
 
