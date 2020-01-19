@@ -174,6 +174,7 @@
     <ProjectReference Include="..\Utility\Utility.vcxproj">
       <Project>{ac1c04b9-d6eb-4a64-ac7b-2bd438de6d32}</Project>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

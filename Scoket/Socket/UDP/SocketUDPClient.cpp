@@ -181,7 +181,7 @@ void CSocketUDP::HeartbeatThreadProcessFunction(CSocketUDP * ClassParam)
 		std::this_thread::sleep_for(std::chrono::milliseconds(m_SendTimeInterval));
 		CriticalSectionLockGuardian heartbeat(ClassParam->m_HeartbeatandSendcritical);
 		::sendto(this->m_sockthandle, m_HeartbeatData.c_str(), m_HeartbeatData.length(), 0, (SOCKADDR*)&this->m_RemoteAddr, sizeof(this->m_RemoteAddr));
-		timestart.PrintTimePassed(RunTimeMeasure::TIMEUNIT::milliseconds, "cost time(milliseconds):");
+		timestart.printTimePassed(RunTimeMeasure::TIMEUNIT::milliseconds, "cost time(milliseconds):");
 	}
 }
 

@@ -2,8 +2,8 @@
 #include "../SocketInterface.h"
 #include <atomic>
 #include <chrono>
-#include "../../../Utility/TestFunction/RunTimeMeausre.h"
-#include "../../../Utility/synchronizationwrap.hpp"
+#include "../../../Utility/TestFunction/RunTimeMeasure.h"
+#include "../../../Utility/Synchronizationwrap/synchronizationwrap.hpp"
 using namespace std::chrono;
 class CScoketTCPClient :public CScoketBase
 {

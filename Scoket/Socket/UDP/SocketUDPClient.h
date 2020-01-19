@@ -1,7 +1,7 @@
 #pragma once
 #include "../SocketInterface.h"
-#include "../../../Utility/TestFunction/RunTimeMeausre.h"
-#include "../../../Utility/synchronizationwrap.hpp"
+#include "../../../Utility/Synchronizationwrap/synchronizationwrap.hpp"
+#include "../../../Utility/TestFunction/RunTimeMeasure.h"
 class CSocketUDP :public CScoketBase
 {
 public:

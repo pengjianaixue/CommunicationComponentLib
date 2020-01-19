@@ -2,14 +2,14 @@
 #if _WIN32
 #include <Windows.h>
 /***********************************
-	RAII wrap  CRITICAL_SECTION
+RAII wrap  CRITICAL_SECTION
 ************************************/
 class CriticalSectionLockGuardian
 {
 public:
-	 explicit CriticalSectionLockGuardian(CRITICAL_SECTION &Critical_Section): m_Critical_Section(Critical_Section) {::EnterCriticalSection(&m_Critical_Section);}
-	 CriticalSectionLockGuardian() = delete;
-	 ~CriticalSectionLockGuardian() { ::LeaveCriticalSection(&m_Critical_Section);}
+	explicit CriticalSectionLockGuardian(CRITICAL_SECTION &Critical_Section) : m_Critical_Section(Critical_Section){::EnterCriticalSection(&m_Critical_Section);}
+	CriticalSectionLockGuardian() = delete;
+	~CriticalSectionLockGuardian() { ::LeaveCriticalSection(&m_Critical_Section); }
 private:
 	CriticalSectionLockGuardian(const CriticalSectionLockGuardian&);
 	CriticalSectionLockGuardian operator = (const CriticalSectionLockGuardian&);
