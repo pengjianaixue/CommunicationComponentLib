@@ -28,6 +28,9 @@
     <Filter Include="SSH">
       <UniqueIdentifier>{4943bf26-bb62-41d6-bd36-3eb04813c077}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Telnet">
+      <UniqueIdentifier>{3e0501b6-747b-497b-980a-fbca1c4f9d8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,6 +60,9 @@
     <ClInclude Include="SSH\SSHshell.h">
       <Filter>SSH</Filter>
     </ClInclude>
+    <ClInclude Include="Telnet\Telnet.h">
+      <Filter>Telnet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp">
@@ -82,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="SSH\SSHshell.cpp">
       <Filter>SSH</Filter>
+    </ClCompile>
+    <ClCompile Include="Telnet\Telnet.cpp">
+      <Filter>Telnet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

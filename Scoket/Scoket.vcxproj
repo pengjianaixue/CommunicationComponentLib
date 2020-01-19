@@ -74,6 +74,8 @@
     <LinkIncremental>true</LinkIncremental>
     <Linkage-libssh2>
     </Linkage-libssh2>
+    <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    <Linkage-curl>static</Linkage-curl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -156,12 +158,14 @@
     <ClInclude Include="SSH\SSHshell.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Telnet\Telnet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Socket\UDP\SocketUDPClient.cpp" />
     <ClCompile Include="SSH\SSHChannel.cpp" />
     <ClCompile Include="SSH\SSHshell.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Telnet\Telnet.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="Socket\SocketInterface.cpp" />
     <ClCompile Include="Socket\Tcp_Client\ScoketTcpClient.cpp" />
@@ -185,6 +189,8 @@
     <Import Project="..\packages\zlib.1.2.7.30\build\native\zlib.targets" Condition="Exists('..\packages\zlib.1.2.7.30\build\native\zlib.targets')" />
     <Import Project="..\packages\openssl.1.0.1.9\build\native\openssl.targets" Condition="Exists('..\packages\openssl.1.0.1.9\build\native\openssl.targets')" />
     <Import Project="..\packages\libssh2.1.4.3.3\build\native\libssh2.targets" Condition="Exists('..\packages\libssh2.1.4.3.3\build\native\libssh2.targets')" />
+    <Import Project="..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets" Condition="Exists('..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" />
+    <Import Project="..\packages\curl.7.30.0.2\build\native\curl.targets" Condition="Exists('..\packages\curl.7.30.0.2\build\native\curl.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -197,5 +203,7 @@
     <Error Condition="!Exists('..\packages\openssl.1.0.1.9\build\native\openssl.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\openssl.1.0.1.9\build\native\openssl.props'))" />
     <Error Condition="!Exists('..\packages\openssl.1.0.1.9\build\native\openssl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\openssl.1.0.1.9\build\native\openssl.targets'))" />
     <Error Condition="!Exists('..\packages\libssh2.1.4.3.3\build\native\libssh2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\libssh2.1.4.3.3\build\native\libssh2.targets'))" />
+    <Error Condition="!Exists('..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\curl.7.30.0.2\build\native\curl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\curl.7.30.0.2\build\native\curl.targets'))" />
   </Target>
 </Project>

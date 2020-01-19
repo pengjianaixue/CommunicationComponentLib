@@ -3,6 +3,7 @@
 #include <libssh2_sftp.h>
 #include <string>
 #include <iostream>
+#include <curl\curl.h>
 #include "../../Utility/DynamicLibExprotMarco.h"
 using std::string;
 class  Channel
