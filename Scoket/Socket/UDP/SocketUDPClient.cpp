@@ -126,7 +126,7 @@ bool CSocketUDP::DisableClientHeartbeat()
 	return CloseHeartbeartThread();
 }
 
-void CSocketUDP::RecviThreadProcessFunction(CSocketUDP * ClassParam)
+void CSocketUDP::RecviThreadProcessFunction(CSocketUDP *ClassParam)
 {
 	timeval ReadTimeOut = { 0 };
 	ReadTimeOut.tv_sec = 0;
