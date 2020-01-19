@@ -4,25 +4,25 @@
 CTelnet::CTelnet(const std::string &address, const std::string &port,const std::string &userAccount /*= ""*/, const std::string &passwd/*=""*/)
 {
 	setConnectInfor(address, port, userAccount, passwd);
-	m_curl = curl_easy_init();
+	//m_curl = curl_easy_init();
 	
 }
 CTelnet::~CTelnet()
 {
-	curl_easy_cleanup(curl);
-	curl_slist_free_all(options);
+	/*curl_easy_cleanup(curl);
+	curl_slist_free_all(options);*/
 }
 
 bool CTelnet::connect()
 {
 	if (m_curl) {
 
-		options = curl_slist_append(NULL, "TTTYPE=vt100");
+		/*options = curl_slist_append(NULL, "TTTYPE=vt100");
 		options = curl_slist_append(m_options, std::string("USER=" + m_userAccount).c_str() );
 		curl_easy_setopt(curl, CURLOPT_URL, std::string(m_address+ " " + m_port).c_str());
 		curl_easy_setopt(curl, CURLOPT_TELNETOPTIONS, m_options);
 		ret = curl_easy_perform(curl);
-		return ret== CURLE_OK;
+		return ret== CURLE_OK;*/
 	}
 	return false;
 }

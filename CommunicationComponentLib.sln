@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scoket", "Scoket\Scoket.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "Utility\Utility.vcxproj", "{AC1C04B9-D6EB-4A64-AC7B-2BD438DE6D32}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComPort", "ComPort\ComPort.vcxproj", "{F9EB490A-09B7-45FF-9FCD-BB398A143828}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{AC1C04B9-D6EB-4A64-AC7B-2BD438DE6D32}.Release|x64.Build.0 = Release|x64
 		{AC1C04B9-D6EB-4A64-AC7B-2BD438DE6D32}.Release|x86.ActiveCfg = Release|Win32
 		{AC1C04B9-D6EB-4A64-AC7B-2BD438DE6D32}.Release|x86.Build.0 = Release|Win32
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Debug|x64.ActiveCfg = Debug|x64
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Debug|x64.Build.0 = Debug|x64
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Debug|x86.ActiveCfg = Debug|Win32
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Debug|x86.Build.0 = Debug|Win32
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Release|x64.ActiveCfg = Release|x64
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Release|x64.Build.0 = Release|x64
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Release|x86.ActiveCfg = Release|Win32
+		{F9EB490A-09B7-45FF-9FCD-BB398A143828}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

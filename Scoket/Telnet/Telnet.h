@@ -22,6 +22,7 @@ private:
 	std::string m_address;
 	std::string m_port;
 	std::string m_userAccount;
+	std::string m_passwd;
 
 
 };

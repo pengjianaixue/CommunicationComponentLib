@@ -15,21 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DynamicLibExprotMarco.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TestFunction\RunTimeMeasure.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Synchronizationwrap\synchronizationwrap.hpp">
+    <ClInclude Include="ComDevice.hpp">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestFunction\RunTimeMeasure.cpp">
+    <ClCompile Include="ComPortTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

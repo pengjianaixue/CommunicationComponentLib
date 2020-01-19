@@ -4,7 +4,7 @@
 /***********************************
 RAII wrap  CRITICAL_SECTION
 ************************************/
-class CriticalSectionLockGuardian
+class CriticalSectionLockGuardian 
 {
 public:
 	explicit CriticalSectionLockGuardian(CRITICAL_SECTION &Critical_Section) : m_Critical_Section(Critical_Section){::EnterCriticalSection(&m_Critical_Section);}
