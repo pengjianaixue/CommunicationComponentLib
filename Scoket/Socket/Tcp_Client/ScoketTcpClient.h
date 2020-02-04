@@ -20,7 +20,7 @@ public:
 	virtual	int			SendData(const byte* senddata, size_t SendNum) override;
 	virtual	int			Recvi(byte *recvidata, size_t recvilength) override;
 	virtual	bool		GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget) override;
-	virtual	bool		ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction) override;
+	virtual	bool		ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction) ;
 	virtual bool		GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const override;
 	virtual bool		EnableClientHeartbeat() override;
 	virtual bool		DisableClientHeartbeat()override;

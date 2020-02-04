@@ -9,7 +9,8 @@
 #include <atomic>
 #include "../../Utility/DynamicLibExprotMarco.h"
 #ifdef _DEBUG
-#define DEBUGMSG(msg) std::cout<<(msg)<<std::endl;
+#define DEBUGMSG(msg) std::cout<<msg<<std::endl;
+#define DEBUGERR(msg) fprintf(stderr,std::string(msg).c_str());
 #else
 #define DEBUGMSG(msg)	 
 #endif // _DEBUG
@@ -34,19 +35,18 @@ public:
 	virtual								~CScoketBase();
 	//Interface 
 	virtual	bool						Connect() = 0;
-	virtual	bool						DisConnect();
-	virtual	bool						Isopen();
-	virtual	bool						IsConnect();
-	virtual	int							SendData(const byte* senddata, size_t SendNum);
-	virtual	int							Recvi(byte* recvidata, size_t recvilength);
-	virtual	int							RecviAsync(byte* recvidata, size_t recvilength);
-	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget);
-	virtual	bool						ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction);
-	virtual bool						SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout);
-	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const;
-	virtual bool						SetClientHeartbeat(const byte* Heartbeatdata, size_t SendTimeIntervalofMillisecond);
-	virtual bool						EnableClientHeartbeat();
-	virtual bool						DisableClientHeartbeat();
+	virtual	bool						DisConnect() ;
+	virtual	bool						Isopen() ;
+	virtual	bool						IsConnect() ;
+	virtual	int							SendData(const byte* senddata, size_t SendNum) ;
+	virtual	int							Recvi(byte* recvidata, size_t recvilength) ;
+	virtual	int							RecviAsync(byte* recvidata, size_t recvilength) ;
+	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget) ;
+	virtual bool						SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout) ;
+	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const ;
+	virtual bool						SetHeartbeat(const byte* Heartbeatdata, size_t SendTimeIntervalofMillisecond) ;
+	virtual bool						EnableClientHeartbeat() ;
+	virtual bool						DisableClientHeartbeat() ;
 
 
 

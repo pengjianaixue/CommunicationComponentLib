@@ -54,10 +54,6 @@ bool CScoketBase::GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN & clientinforge
 	return false;
 }
 
-bool CScoketBase::ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction)
-{
-	return false;
-}
 
 bool CScoketBase::SetSyncReadAndRecviTimeOut(int Sendtimeout, int Recvitimeout)
 {
@@ -71,7 +67,7 @@ bool CScoketBase::GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout
 	return true;
 }
 
-bool CScoketBase::SetClientHeartbeat(const byte *Heartbeatdata, size_t SendTimeIntervalofMillisecond)
+bool CScoketBase::SetHeartbeat(const byte *Heartbeatdata, size_t SendTimeIntervalofMillisecond)
 {
 	m_HeartbeatData = (const char*)Heartbeatdata;
 	m_SendTimeInterval = SendTimeIntervalofMillisecond;

@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.props" Condition="Exists('..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.props')" />
+  <Import Project="..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.props" Condition="Exists('..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.props')" />
+  <Import Project="..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.props" Condition="Exists('..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.props')" />
   <Import Project="..\packages\openssl.1.0.1.9\build\native\openssl.props" Condition="Exists('..\packages\openssl.1.0.1.9\build\native\openssl.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -78,15 +81,21 @@
     <LinkIncremental>true</LinkIncremental>
     <Linkage-libssh2>
     </Linkage-libssh2>
-    <Linkage-curl>static</Linkage-curl>
+    <Linkage-curl>
+    </Linkage-curl>
     <IncludePath>$(IncludePath)</IncludePath>
     <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    <Linkage-zlib>
+    </Linkage-zlib>
+    <Linkage-openssl>
+    </Linkage-openssl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -198,6 +207,9 @@
     <Import Project="..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets" Condition="Exists('..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" />
     <Import Project="..\packages\curl.7.30.0.2\build\native\curl.targets" Condition="Exists('..\packages\curl.7.30.0.2\build\native\curl.targets')" />
     <Import Project="..\packages\libevent2-vc140.2.1.8\build\native\libevent2-vc140.targets" Condition="Exists('..\packages\libevent2-vc140.2.1.8\build\native\libevent2-vc140.targets')" />
+    <Import Project="..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.targets" Condition="Exists('..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.targets')" />
+    <Import Project="..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.targets" Condition="Exists('..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.targets')" />
+    <Import Project="..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.targets" Condition="Exists('..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -213,5 +225,11 @@
     <Error Condition="!Exists('..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets'))" />
     <Error Condition="!Exists('..\packages\curl.7.30.0.2\build\native\curl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\curl.7.30.0.2\build\native\curl.targets'))" />
     <Error Condition="!Exists('..\packages\libevent2-vc140.2.1.8\build\native\libevent2-vc140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\libevent2-vc140.2.1.8\build\native\libevent2-vc140.targets'))" />
+    <Error Condition="!Exists('..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.props'))" />
+    <Error Condition="!Exists('..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_zlib.1.2.8.7\build\native\rmt_zlib.targets'))" />
+    <Error Condition="!Exists('..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.props'))" />
+    <Error Condition="!Exists('..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_openssl.1.1.0.3\build\native\rmt_openssl.targets'))" />
+    <Error Condition="!Exists('..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.props'))" />
+    <Error Condition="!Exists('..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rmt_libssh2.1.8.0.0\build\native\rmt_libssh2.targets'))" />
   </Target>
 </Project>

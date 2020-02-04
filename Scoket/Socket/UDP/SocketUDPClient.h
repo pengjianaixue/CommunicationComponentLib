@@ -10,18 +10,18 @@ public:
 //API 
 public:
 	//Interface 
-	virtual	bool						Connect();
-	virtual	bool						DisConnect();
-	virtual	bool						Isopen();
-	virtual	bool						IsConnect();
-	virtual	int							SendData(const byte* senddata, size_t SendNum);
-	virtual	int							Recvi(byte* recvidata, size_t recvilength);
-	virtual	int							RecviAsync(byte* recvidata, size_t recvilength);
-	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget);
-	virtual	bool						ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction);
-	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const;
-	virtual bool						EnableClientHeartbeat();
-	virtual bool						DisableClientHeartbeat();
+	virtual	bool						Connect() override;
+	virtual	bool						DisConnect() override;
+	virtual	bool						Isopen() override;
+	virtual	bool						IsConnect() override;
+	virtual	int							SendData(const byte* senddata, size_t SendNum) override;
+	virtual	int							Recvi(byte* recvidata, size_t recvilength) override;
+	virtual	int							RecviAsync(byte* recvidata, size_t recvilength)override;
+	virtual	bool						GetSocktInfor(SOCKTTYPE sockttype, SOCKADDR_IN &clientinforget) override;
+	virtual	bool						ReigsterAsyncRecviProcessFunction(RecviCallBackFunction CallBackfunction) ;
+	virtual bool						GetSyncReadAndRecviTimeOut(int &Sendtimeout, int &Recvitimeout) const override;
+	virtual bool						EnableClientHeartbeat() override;
+	virtual bool						DisableClientHeartbeat() override;
 private:
 	void								RecviThreadProcessFunction(CSocketUDP *ClassParam);
 	void								HeartbeatThreadProcessFunction(CSocketUDP *ClassParam);
